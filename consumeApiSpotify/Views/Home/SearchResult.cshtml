@@ -1,0 +1,33 @@
+﻿@using consumeApiSpotify.Models
+@model List<ArtistInfo>
+
+@{
+    ViewBag.Title = "Search Results Page";
+}
+
+
+    <div>
+        <h1>Your search results.</h1>
+        <h2>Here are all the tracks in spotify, for the artist you searched for!</h2>
+    </div>
+
+
+    <div>
+        <ul class="searchlist">
+            @*<img src="http://lorempixel.com/400/200/"/>*@
+            @*<img src="http://loremflickr.com/320/240/music" />*@
+            
+            @foreach (var item in Model)
+            {
+                <img src="http://loremflickr.com/320/240/@item.name"/>
+                @*<img src="http://p-hold.com/@item.name/320/240" />*@
+                <li>Artist: @item.name</li>
+                <li>
+                    <a href="@("https://play.spotify.com/artist/" + item.href.Substring(15, item.href.Length - 15))">Link to spotify for this track!</a>
+                </li>
+                <li>Popularity Rating: @item.popularity</li>
+
+                <br />
+            }
+        </ul>
+    </div>
